@@ -4,7 +4,7 @@ let amigos = [];
 
 function agregarAmigo(){
     const inputAmigo = document.getElementById('amigo');
-    const nombreAmigo = inputAmigo.ariaValueMax.trim();
+    const nombreAmigo = inputAmigo.value.trim();
 
     // Validar que el campo no esté vacío
     if(nombreAmigo === ''){
@@ -29,6 +29,35 @@ function agregarAmigo(){
 
 }
 
+//función para actualizar la lista de amigos en el HTML
+function actualizarLista(){
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.innerHTML = "";
 
+    for(let i = 0; i < amigos.length; i++){
+        const li = document.createElement('li');
+        li.textContent = amigos[i];
+        listaAmigos.appendChild(li);
+    }
 
+    
+}
+
+//función para buscar un amigo en la lista de amigos
+function sortearAmigo(){
+
+    if(amigos.length === 0){
+        alert("No hay amigos disponibles para sortear");
+        return;
+    }
+// generar de formar aleatoria
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+
+// obtener el nombre sorteado
+    const amigoSorteado = amigos[indiceAleatorio];
+
+//Mostrar el resultado en el HTML
+    const resultado = document.getElementById('resultado');
+    resultado.innerHTML = `amigo sorteado: ${amigoSorteado}`;
+}
 
